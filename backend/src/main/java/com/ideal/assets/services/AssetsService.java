@@ -3,17 +3,17 @@ package com.ideal.assets.services;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import com.ideal.assets.dto.AssetsDTO;
 import com.ideal.assets.entities.Assets;
 import com.ideal.assets.repositories.AssetsRepository;
+import com.ideal.assets.services.exceptions.EntityNotFundException;
 
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
@@ -61,12 +61,11 @@ public class AssetsService {
 		}
 		return listDTO;
 	}
-
-	public void deleteById(Long assetId) {
-		try {
-			repository.deleteById(assetId);
-		} catch (EmptyResultDataAccessException e) {
-			throw new EntityNotFoundException("Asset with id " + assetId + " not found");
-		}
+	@Transactional
+	public AssetsDTO deleteById(Long id) {
+		Optional<Assets> obj = repository.findById(id);
+		Assets entity = obj.orElseThrow(() -> new EntityNotFundException("Entity not found"));
+		repository.deleteById(id);
+		return new AssetsDTO(entity);
 	}
 }
