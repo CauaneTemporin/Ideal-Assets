@@ -19,14 +19,14 @@ import com.ideal.assets.dto.AssetsDTO;
 import com.ideal.assets.services.AssetsService;
 
 @RestController
-@RequestMapping(value = "/asset")
+@RequestMapping(value = "/assets")
 public class AssetsResource {
 	
 	@Autowired
 	AssetsService service;
 
-	//Returns any asset "url http://localhost:8080/asset/ASSETNAME"
-	@GetMapping("/{assetName}")
+	//Returns any asset "url http://localhost:8080/assets/ASSETNAME"
+	@GetMapping("/{assetsName}")
 	public ResponseEntity<AssetsDTO> findByAssetName(@PathVariable String assetName) throws IOException {
 		return ResponseEntity.ok().body(service.findByAssetName(assetName));
 	}
@@ -39,16 +39,16 @@ public class AssetsResource {
 		return ResponseEntity.created(uri).body(dto);
 	}
 
-	//Returns the list of your assets "url http://localhost:8080/asset/seeList"
+	//Returns the list of your assets "url http://localhost:8080/assets/seeList"
 	@GetMapping("/seeList")
 	public ResponseEntity<List<AssetsDTO>> seeList() throws IOException {
 		return ResponseEntity.ok().body(service.findAll());
 	}
 
-	//Delete asset from id "url http://localhost:8080/asset/delete/id"
-	@DeleteMapping("/delete/{assetId}")
-	public ResponseEntity<Object> deleteAsset(@PathVariable Long assetId) {
-		service.deleteById(assetId);
+	//Delete asset from id "url http://localhost:8080/assets/delete/id"
+	@DeleteMapping("/delete/{assetsId}")
+	public ResponseEntity<Object> deleteAsset(@PathVariable Long assetsId) {
+		service.deleteById(assetsId);
 		return ResponseEntity.noContent().build();
 	}
 }
