@@ -15,7 +15,7 @@ import com.ideal.assets.repositories.AssetsRepository;
 import com.ideal.assets.services.exceptions.EntityNotFundException;
 
 import jakarta.transaction.Transactional;
-import yahoofinance.Stock;
+import yahoofinance.Stock; 
 import yahoofinance.YahooFinance;
 
 @Service

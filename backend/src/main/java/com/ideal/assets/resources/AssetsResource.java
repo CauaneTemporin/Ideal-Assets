@@ -25,7 +25,7 @@ public class AssetsResource {
 	@Autowired
 	AssetsService service;
 
-	//Retorna qualquer ativo do Yahoo "url http://localhost:8080/asset/NOMEdoAtivo"
+	//Returns any asset "url http://localhost:8080/asset/ASSETNAME"
 	@GetMapping("/{assetName}")
 	public ResponseEntity<AssetsDTO> findByAssetName(@PathVariable String assetName) throws IOException {
 		return ResponseEntity.ok().body(service.findByAssetName(assetName));
