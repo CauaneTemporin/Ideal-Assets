@@ -26,7 +26,7 @@ public class AssetsResource {
 	AssetsService service;
 
 	//Returns any asset "url http://localhost:8080/assets/ASSETNAME"
-	@GetMapping("/{assetsName}")
+	@GetMapping("/{assetName}")
 	public ResponseEntity<AssetsDTO> findByAssetName(@PathVariable String assetName) throws IOException {
 		return ResponseEntity.ok().body(service.findByAssetName(assetName));
 	}
