@@ -1,2 +1,3 @@
 # Ideal-Assets
-API Web Yahoo com conexão BD H2 e Spring Boot que possibilita aos usuários criarem sua lista de acompanhamento de ativos para consulta de suas cotações (preço do ativo).
+
+Yahoo Web API with connection H2 Database and Spring Boot that allows users to create their list of monitoring assets to consult their quotations (price of the asset).
