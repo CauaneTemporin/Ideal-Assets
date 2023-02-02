@@ -31,7 +31,7 @@ public class AssetsResource {
 		return ResponseEntity.ok().body(service.findByAssetName(assetName));
 	}
 
-	//Salva os ativos, eles são salvos pelo postman e ficam salvos no Banco h2
+	//Save the assets, they are saved by the postman and are saved in the Bank h2
 	@PostMapping
 	public ResponseEntity<AssetsDTO> addAsset(@RequestBody AssetsDTO dto) {
 		dto = service.insert(dto);
@@ -39,13 +39,13 @@ public class AssetsResource {
 		return ResponseEntity.created(uri).body(dto);
 	}
 
-	//Retorna a lista dos seus ativos "url http://localhost:8080/asset/seeList"
+	//Returns the list of your assets "url http://localhost:8080/asset/seeList"
 	@GetMapping("/seeList")
 	public ResponseEntity<List<AssetsDTO>> seeList() throws IOException {
 		return ResponseEntity.ok().body(service.findAll());
 	}
 
-	//Deleta o ativo a partir do id "url http://localhost:8080/asset/delete/IDdoATIVOqueVAIdeletar"
+	//Delete asset from id "url http://localhost:8080/asset/delete/id"
 	@DeleteMapping("/delete/{assetId}")
 	public ResponseEntity<Object> deleteAsset(@PathVariable Long assetId) {
 		service.deleteById(assetId);
