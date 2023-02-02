@@ -31,7 +31,7 @@ public class AssetsResource {
 		return ResponseEntity.ok().body(service.findByAssetName(assetName));
 	}
 
-	//Salva os ativos, eles são salvos pelo postman e ficam salvos no banco h2
+	//Salva os ativos, eles são salvos pelo postman e ficam salvos no Banco h2
 	@PostMapping
 	public ResponseEntity<AssetsDTO> addAsset(@RequestBody AssetsDTO dto) {
 		dto = service.insert(dto);
